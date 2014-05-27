@@ -20,3 +20,24 @@
 # org.apache.cordova.splashscreen
 
 Plugin documentation: [doc/index.md](doc/index.md)
+
+This plugin is a fork from the official one. It has only one line changed which remove completely the white damn splash screen. It's working only on iOS (for now).
+
+So to fix the problem, add this plugin :
+
+```
+cordova plugin add https://github.com/yrezgui/cordova-plugin-splashscreen.git
+```
+
+Add this line on your ```config.xml``` :
+
+```
+<preference name="AutoHideSplashScreen" value="false" />
+```
+
+And a ```<script>``` in the ```<body>``` of your ```index.html``` with this content :
+```
+document.addEventListener('deviceready', function ready() {
+  navigator.splashscreen.hide();
+}, false);
+```
